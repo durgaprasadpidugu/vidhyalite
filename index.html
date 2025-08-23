@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VidyaLite — Smart Learning Platform</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0b63b7">
+<style>
+:root{--brand:#0b63b7;--bg:#f4f7fb;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#111}
+header{background:var(--brand);color:#fff;padding:14px 16px;text-align:center;font-size:20px;font-weight:700}
+.container{max-width:1000px;margin:18px auto;padding:12px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:14px}
+.btn{background:#fff;border:1px solid rgba(0,0,0,.08);padding:8px 12px;border-radius:10px;cursor:pointer}
+.search{flex:1}
+input[type="search"]{width:100%;padding:10px;border-radius:10px;border:1px solid #ddd}
+h2{color:var(--brand);margin:20px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(15,15,15,.06)}
+.card h3{margin:0 0 8px;font-size:16px}
+.links a{display:inline-block;margin:6px 6px 0 0;padding:8px 10px;border-radius:8px;border:1px solid rgba(0,0,0,.08);text-decoration:none;color:var(--brand);font-weight:600}
+footer{text-align:center;color:#666;padding:18px 8px;margin-top:18px;font-size:14px}
+.muted{color:#666;font-size:13px}
+#appBadge{position:fixed;right:14px;bottom:14px;width:56px;height:56px;border-radius:12px;box-shadow:0 6px 20px rgba(11,99,183,.18);background:#fff;padding:6px;display:flex;align-items:center;justify-content:center;z-index:9999;}
+@media (max-width:520px){header{font-size:18px}}
+</style>
+</head>
+<body>
+<header>📚 VidyaLite — Smart Learning Platform</header>
+<main class="container">
+<div class="controls row">
+<div style="min-width:120px">
+<select id="classFilter" class="btn" aria-label="Select class">
+<option value="">All Classes</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+</select>
+</div>
+<div style="flex:1" class="search">
+<input id="q" type="search" placeholder="Search subject or book (e.g., telugu, maths)">
+</div>
+<button id="reset" class="btn">Reset</button>
+</div>
+<section id="grid" class="grid" aria-live="polite"></section>
+<div id="empty" class="muted" style="margin-top:18px;display:none">No results.</div>
+</main>
+<footer>© 2025 VidyaLite.com</footer>
+<div id="appBadge" title="VidyaLite">
+<svg width="56" height="56" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<rect rx="160" ry="160" width="1024" height="1024" fill="#0b63b7"/>
+<g transform="translate(120,150) scale(0.7)">
+<path d="M80 160 C260 80, 520 80, 700 160 L700 520 C520 440, 260 440, 80 520 Z" fill="#ffffff"/>
+<rect x="160" y="90" rx="30" ry="30" width="360" height="110" fill="#0b63b7"/>
+</g>
+</svg>
+</div>
+<script>
+const DATA=[
+{cls:'9',id:'telugu',name:'Telugu',tb:'https://ncert.nic.in/textbook/pdf/ietb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/iegp1.pdf'},
+{cls:'9',id:'hindi',name:'Hindi',tb:'https://ncert.nic.in/textbook/pdf/khhb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/khgp1.pdf'},
+{cls:'9',id:'english',name:'English',tb:'https://ncert.nic.in/textbook/pdf/keeb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/kegp1.pdf'},
+{cls:'9',id:'maths',name:'Maths',tb:'https://ncert.nic.in/textbook/pdf/iemh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/iemg1.pdf'},
+{cls:'9',id:'biology',name:'Biology',tb:'https://ncert.nic.in/textbook/pdf/ibob1.pdf',guide:'https://ncert.nic.in/textbook/pdf/ibog1.pdf'},
+{cls:'9',id:'physics',name:'Physics',tb:'https://ncert.nic.in/textbook/pdf/ipbh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/ipbg1.pdf'},
+{cls:'9',id:'social',name:'Social',tb:'https://ncert.nic.in/textbook/pdf/issb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/issg1.pdf'},
+{cls:'10',id:'telugu',name:'Telugu',tb:'https://ncert.nic.in/textbook/pdf/jetb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jegp1.pdf'},
+{cls:'10',id:'hindi',name:'Hindi',tb:'https://ncert.nic.in/textbook/pdf/jhhb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jhgp1.pdf'},
+{cls:'10',id:'english',name:'English',tb:'https://ncert.nic.in/textbook/pdf/jeeb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jegp1.pdf'},
+{cls:'10',id:'maths',name:'Maths',tb:'https://ncert.nic.in/textbook/pdf/jemh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jemg1.pdf'},
+{cls:'10',id:'biology',name:'Biology',tb:'https://ncert.nic.in/textbook/pdf/jbob1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jbog1.pdf'},
+{cls:'10',id:'physics',name:'Physics',tb:'https://ncert.nic.in/textbook/pdf/jpbh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jpbg1.pdf'},
+{cls:'10',id:'social',name:'Social',tb:'https://ncert.nic.in/textbook/pdf/jssb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jssg1.pdf'}
+];
+const grid=document.getElementById('grid'),
+      q=document.getElementById('q'),
+      classFilter=document.getElementById('classFilter'),
+      reset=document.getElementById('reset'),
+      empty=document.getElementById('empty');
+
+function render(list){
+grid.innerHTML='';
+if(!list.length){empty.style.display='block';return;} else empty.style.display='none';
+list.forEach(item=>{
+  const card=document.createElement('article');
+  card.className='card';
+  card.innerHTML=`<h3>${item.name} <span style="float:right;font-size:13px;color:#666">Class ${item.cls}</span></h3>
+  <div class="links">
+    <a href="${item.tb}" target="_blank" rel="noopener">📖 Textbook</a>
+    <a href="${item.guide}" target="_blank" rel="noopener">📝 Guide</a>
+  </div>`;
+  grid.appendChild(card);
+});
+}
+
+function applyFilters(){
+const term=q.value.trim().toLowerCase();
+const cls=classFilter.value;
+const filtered=DATA.filter(d=>{
+if(cls && d.cls!==cls) return false;
+if(!term) return true;
+return (d.name+' '+d.id+' '+d.cls).toLowerCase().includes(term);
+});
+render(filtered);
+}
+
+q.addEventListener('input',applyFilters);
+classFilter.addEventListener('change',applyFilters);
+reset.addEventListener('click',()=>{q.value='';classFilter.value='';applyFilters();});
+applyFilters();
+
+// ✅ Updated Service Worker Register
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(reg => console.log("Service Worker registered:", reg))
+      .catch(err => console.log("Service Worker failed:", err));
+  });
+}
+</script>
+</body>
+</html>

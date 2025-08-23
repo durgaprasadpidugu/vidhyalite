@@ -1,0 +1,25 @@
+:root{--brand:#0b63b7;--bg:#f4f7fb;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#111}
+header{background:var(--brand);color:#fff;padding:14px 16px;text-align:center;font-size:20px;font-weight:700}
+.container{max-width:1000px;margin:18px auto;padding:12px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:14px}
+.btn{background:#fff;border:1px solid rgba(0,0,0,.08);padding:8px 12px;border-radius:10px;cursor:pointer}
+.search{flex:1}
+input[type="search"]{width:100%;padding:10px;border-radius:10px;border:1px solid #ddd}
+h2{color:var(--brand);margin:20px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(15,15,15,.06)}
+.card h3{margin:0 0 8px;font-size:16px}
+.links a{display:inline-block;margin:6px 6px 0 0;padding:8px 10px;border-radius:8px;border:1px solid rgba(0,0,0,.08);text-decoration:none;color:var(--brand);font-weight:600}
+footer{text-align:center;color:#666;padding:18px 8px;margin-top:18px;font-size:14px}
+.muted{color:#666;font-size:13px}
+
+/* small app-badge */
+#appBadge{
+  position:fixed;right:14px;bottom:14px;width:56px;height:56px;border-radius:12px;
+  box-shadow:0 6px 20px rgba(11,99,183,.18);background:#fff;padding:6px;display:flex;align-items:center;justify-content:center;
+  z-index:9999;
+}
+@media (max-width:520px){header{font-size:18px}}
