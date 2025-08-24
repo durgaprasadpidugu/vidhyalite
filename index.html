@@ -32,6 +32,63 @@ footer{text-align:center;color:#666;padding:18px 8px;margin-top:18px;font-size:1
 <body>
 <header>📚 VidyaLite — Smart Learning Platform</header>
 <main class="container">
+
+  <h2>Subjects</h2>
+  <ul>
+    <li>
+      Telugu
+      <ul>
+        <li><a href="pdfs/Telugu/Telugu_Textbook.pdf" target="_blank">Textbook</a></li>
+        <li><a href="pdfs/Telugu/Telugu_Guide.pdf" target="_blank">Guide</a></li>
+      </ul>
+    </li>
+    <li>
+      Hindi
+      <ul>
+        <li><a href="pdfs/Hindi/Hindi_Textbook.pdf" target="_blank">Textbook</a></li>
+        <li><a href="pdfs/Hindi/Hindi_Guide.pdf" target="_blank">Guide</a></li>
+      </ul>
+    </li>
+    <li>
+      English
+      <ul>
+        <li><a href="pdfs/English/English_Textbook.pdf" target="_blank">Textbook</a></li>
+        <li><a href="pdfs/English/English_Guide.pdf" target="_blank">Guide</a></li>
+      </ul>
+    </li>
+    <li>
+      Maths
+      <ul>
+        <li><a href="pdfs/Maths/Maths_Textbook.pdf" target="_blank">Textbook</a></li>
+        <li><a href="pdfs/Maths/Maths_Guide.pdf" target="_blank">Guide</a></li>
+      </ul>
+    </li>
+    <li>
+      Biology
+      <ul>
+        <li><a href="pdfs/Biology/Biology_Textbook.pdf" target="_blank">Textbook</a></li>
+        <li><a href="pdfs/Biology/Biology_Guide.pdf" target="_blank">Guide</a></li>
+      </ul>
+    </li>
+    <li>
+      Physics
+      <ul>
+        <li><a href="pdfs/Physics/Physics_Textbook.pdf" target="_blank">Textbook</a></li>
+        <li><a href="pdfs/Physics/Physics_Guide.pdf" target="_blank">Guide</a></li>
+      </ul>
+    </li>
+    <li>
+      Social
+      <ul>
+        <li><a href="pdfs/Social/Social_Textbook.pdf" target="_blank">Textbook</a></li>
+        <li><a href="pdfs/Social/Social_Guide.pdf" target="_blank">Guide</a></li>
+      </ul>
+    </li>
+  </ul>
+
+
+
+
 <div class="controls row">
 <div style="min-width:120px">
 <select id="classFilter" class="btn" aria-label="Select class">
@@ -60,21 +117,23 @@ footer{text-align:center;color:#666;padding:18px 8px;margin-top:18px;font-size:1
 </div>
 <script>
 const DATA=[
-{cls:'9',id:'telugu',name:'Telugu',tb:'https://ncert.nic.in/textbook/pdf/ietb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/iegp1.pdf'},
-{cls:'9',id:'hindi',name:'Hindi',tb:'https://ncert.nic.in/textbook/pdf/khhb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/khgp1.pdf'},
-{cls:'9',id:'english',name:'English',tb:'https://ncert.nic.in/textbook/pdf/keeb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/kegp1.pdf'},
-{cls:'9',id:'maths',name:'Maths',tb:'https://ncert.nic.in/textbook/pdf/iemh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/iemg1.pdf'},
-{cls:'9',id:'biology',name:'Biology',tb:'https://ncert.nic.in/textbook/pdf/ibob1.pdf',guide:'https://ncert.nic.in/textbook/pdf/ibog1.pdf'},
-{cls:'9',id:'physics',name:'Physics',tb:'https://ncert.nic.in/textbook/pdf/ipbh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/ipbg1.pdf'},
-{cls:'9',id:'social',name:'Social',tb:'https://ncert.nic.in/textbook/pdf/issb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/issg1.pdf'},
-{cls:'10',id:'telugu',name:'Telugu',tb:'https://ncert.nic.in/textbook/pdf/jetb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jegp1.pdf'},
-{cls:'10',id:'hindi',name:'Hindi',tb:'https://ncert.nic.in/textbook/pdf/jhhb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jhgp1.pdf'},
-{cls:'10',id:'english',name:'English',tb:'https://ncert.nic.in/textbook/pdf/jeeb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jegp1.pdf'},
-{cls:'10',id:'maths',name:'Maths',tb:'https://ncert.nic.in/textbook/pdf/jemh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jemg1.pdf'},
-{cls:'10',id:'biology',name:'Biology',tb:'https://ncert.nic.in/textbook/pdf/jbob1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jbog1.pdf'},
-{cls:'10',id:'physics',name:'Physics',tb:'https://ncert.nic.in/textbook/pdf/jpbh1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jpbg1.pdf'},
-{cls:'10',id:'social',name:'Social',tb:'https://ncert.nic.in/textbook/pdf/jssb1.pdf',guide:'https://ncert.nic.in/textbook/pdf/jssg1.pdf'}
+  {cls:'9',id:'telugu',name:'Telugu',tb:'pdfs/Telugu/Telugu_Textbook.pdf',guide:'pdfs/Telugu/Telugu_Guide.pdf'},
+  {cls:'9',id:'hindi',name:'Hindi',tb:'pdfs/Hindi/Hindi_Textbook.pdf',guide:'pdfs/Hindi/Hindi_Guide.pdf'},
+  {cls:'9',id:'english',name:'English',tb:'pdfs/English/English_Textbook.pdf',guide:'pdfs/English/English_Guide.pdf'},
+  {cls:'9',id:'maths',name:'Maths',tb:'pdfs/Maths/Maths_Textbook.pdf',guide:'pdfs/Maths/Maths_Guide.pdf'},
+  {cls:'9',id:'biology',name:'Biology',tb:'pdfs/Biology/Biology_Textbook.pdf',guide:'pdfs/Biology/Biology_Guide.pdf'},
+  {cls:'9',id:'physics',name:'Physics',tb:'pdfs/Physics/Physics_Textbook.pdf',guide:'pdfs/Physics/Physics_Guide.pdf'},
+  {cls:'9',id:'social',name:'Social',tb:'pdfs/Social/Social_Textbook.pdf',guide:'pdfs/Social/Social_Guide.pdf'},
+
+  {cls:'10',id:'telugu',name:'Telugu',tb:'pdfs/Telugu/Telugu_Textbook.pdf',guide:'pdfs/Telugu/Telugu_Guide.pdf'},
+  {cls:'10',id:'hindi',name:'Hindi',tb:'pdfs/Hindi/Hindi_Textbook.pdf',guide:'pdfs/Hindi/Hindi_Guide.pdf'},
+  {cls:'10',id:'english',name:'English',tb:'pdfs/English/English_Textbook.pdf',guide:'pdfs/English/English_Guide.pdf'},
+  {cls:'10',id:'maths',name:'Maths',tb:'pdfs/Maths/Maths_Textbook.pdf',guide:'pdfs/Maths/Maths_Guide.pdf'},
+  {cls:'10',id:'biology',name:'Biology',tb:'pdfs/Biology/Biology_Textbook.pdf',guide:'pdfs/Biology/Biology_Guide.pdf'},
+  {cls:'10',id:'physics',name:'Physics',tb:'pdfs/Physics/Physics_Textbook.pdf',guide:'pdfs/Physics/Physics_Guide.pdf'},
+  {cls:'10',id:'social',name:'Social',tb:'pdfs/Social/Social_Textbook.pdf',guide:'pdfs/Social/Social_Guide.pdf'}
 ];
+
 const grid=document.getElementById('grid'),
       q=document.getElementById('q'),
       classFilter=document.getElementById('classFilter'),
